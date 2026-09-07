@@ -1,0 +1,6 @@
+{
+  "name": "Carmen's Transportes",
+  "description": "Site institucional e plataforma de logística da Carmen's Transportes. Transporte rodoviário de cargas, rastreamento e soluções logísticas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
