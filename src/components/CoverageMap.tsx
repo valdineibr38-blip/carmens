@@ -87,6 +87,7 @@ export const CoverageMap: React.FC<CoverageMapProps> = ({ onQuoteRoute }) => {
 
   return (
     <section id="rotas" className="py-20 lg:py-28 bg-[#f5f7fb] border-y border-[#e3e8f0] relative">
+      <div id="cobertura" className="absolute -top-20" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Title */}

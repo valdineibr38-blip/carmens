@@ -320,21 +320,30 @@ export const Hero: React.FC<HeroProps> = ({
                     <div className="flex items-center gap-2.5 text-xs text-[#0e1b3a]">
                       <Phone className="w-4 h-4 text-[#e9b949]" />
                       <div>
-                        <strong className="block">0800 800 2400 / (11) 99810-4321</strong>
-                        <span className="text-[11px] text-[#5b6478]">Plantão de Monitoramento & Escolta</span>
+                        <div className="font-bold text-[#0e1b3a]">
+                          <a href="tel:08008002400" className="hover:text-[#cf9f30] transition-colors">0800 800 2400</a>
+                          {' / '}
+                          <a href="tel:+5511998104321" className="hover:text-[#cf9f30] transition-colors">(11) 99810-4321</a>
+                        </div>
+                        <span className="text-[11px] text-[#5b6478]">Plantão de Monitoramento &amp; Escolta</span>
                       </div>
                     </div>
                     <div className="flex items-center gap-2.5 text-xs text-[#0e1b3a] pt-1.5 border-t border-slate-200">
                       <MessageSquare className="w-4 h-4 text-[#25d366]" />
                       <div>
-                        <strong className="block">comercial@carmenstransportes.com.br</strong>
+                        <a
+                          href="mailto:comercial@carmenstransportes.com.br"
+                          className="font-bold block hover:text-[#cf9f30] transition-colors"
+                        >
+                          comercial@carmenstransportes.com.br
+                        </a>
                         <span className="text-[11px] text-[#5b6478]">Atendimento exclusivo para contas corporativas</span>
                       </div>
                     </div>
                   </div>
 
                   <a
-                    href="https://wa.me/5511998104321?text=Ol%C3%A1%2C%20gostaria%20de%20acionar%20a%20Central%2024h%20da%20Carmen's%20Transportes"
+                    href="https://wa.me/5511998104321?text=Ol%C3%A1%2C%20gostaria%20de%20acionar%20a%20Central%2024h%20da%20Carmen%27s%20Transportes"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full bg-[#25d366] hover:bg-[#1ebe5d] text-white py-3 px-4 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md"

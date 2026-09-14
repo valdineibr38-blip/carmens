@@ -49,7 +49,7 @@ export const QuoteSection: React.FC<QuoteSectionProps> = ({
   const handleSendWhatsApp = () => {
     const text = `Olá, Carmen's Transportes! Gostaria de cotar frete para minha empresa.\n\n*Empresa:* ${companyName || 'Não informada'}\n*Contato:* ${contactName || 'Comercial'}\n*Origem:* ${origin || 'A definir'}\n*Destino:* ${destination || 'A definir'}\n*Modalidade:* ${serviceType}\n*Peso estimado:* ${weightKg || 'Não especificado'}\n*Observações:* ${notes || 'Sem observações'}`;
     const encoded = encodeURIComponent(text);
-    window.open(`https://api.whatsapp.com/send?text=${encoded}`, '_blank');
+    window.open(`https://wa.me/5511998765432?text=${encoded}`, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -105,7 +105,11 @@ export const QuoteSection: React.FC<QuoteSectionProps> = ({
             <div className="bg-[#0f1d44] p-5 rounded-2xl border border-white/10 flex flex-wrap items-center justify-between gap-4">
               <div>
                 <div className="text-[10px] uppercase font-bold text-[#8b95ad] tracking-wider">Atendimento Comercial B2B</div>
-                <div className="text-sm font-bold text-white mt-0.5">(11) 99876-5432 / 0800 770 2026</div>
+                <div className="text-sm font-bold text-white mt-0.5">
+                  <a href="tel:+5511998765432" className="hover:text-[#e9b949] transition-colors">(11) 99876-5432</a>
+                  {' / '}
+                  <a href="tel:08007702026" className="hover:text-[#e9b949] transition-colors">0800 770 2026</a>
+                </div>
               </div>
               <button
                 type="button"

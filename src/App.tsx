@@ -14,13 +14,19 @@ import { Hero } from './components/Hero';
 import { ServicesSection } from './components/ServicesSection';
 import { FleetAndTechnology } from './components/FleetAndTechnology';
 import { CoverageMap } from './components/CoverageMap';
+import { Testimonials } from './components/Testimonials';
 import { QuoteSection } from './components/QuoteSection';
 import { Footer } from './components/Footer';
 import { TrackingModal } from './components/TrackingModal';
+import { PolicyModal, PolicyType } from './components/PolicyModal';
 
 export default function App() {
   const [isTrackingModalOpen, setIsTrackingModalOpen] = useState(false);
   const [activeTrackingCode, setActiveTrackingCode] = useState('CMT-84920');
+
+  // Policy modal state
+  const [isPolicyModalOpen, setIsPolicyModalOpen] = useState(false);
+  const [activePolicyTab, setActivePolicyTab] = useState<PolicyType>('termos');
 
   // Prefilled quote fields
   const [quoteService, setQuoteService] = useState('');
@@ -32,6 +38,11 @@ export default function App() {
       setActiveTrackingCode(code);
     }
     setIsTrackingModalOpen(true);
+  };
+
+  const handleOpenPolicy = (tab: PolicyType) => {
+    setActivePolicyTab(tab);
+    setIsPolicyModalOpen(true);
   };
 
   const scrollToQuote = () => {
@@ -85,7 +96,10 @@ export default function App() {
         {/* 4. National Corridors & Transit Time Calculator */}
         <CoverageMap onQuoteRoute={handleQuoteRoute} />
 
-        {/* 5. Comprehensive Freight Quote & B2B Proposal Section */}
+        {/* 5. Client Testimonials & Enterprise Trust Badges */}
+        <Testimonials />
+
+        {/* 6. Comprehensive Freight Quote & B2B Proposal Section */}
         <QuoteSection
           prefilledService={quoteService}
           prefilledOrigin={quoteOrigin}
@@ -94,13 +108,20 @@ export default function App() {
       </main>
 
       {/* Corporate Footer */}
-      <Footer />
+      <Footer onOpenPolicy={handleOpenPolicy} />
 
       {/* Live Cargo Tracking Telemetry Modal */}
       <TrackingModal
         isOpen={isTrackingModalOpen}
         onClose={() => setIsTrackingModalOpen(false)}
         initialCode={activeTrackingCode}
+      />
+
+      {/* Governance, Terms, Privacy & LGPD, Ethics Modal */}
+      <PolicyModal
+        isOpen={isPolicyModalOpen}
+        onClose={() => setIsPolicyModalOpen(false)}
+        initialTab={activePolicyTab}
       />
     </div>
   );

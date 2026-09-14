@@ -10,8 +10,13 @@ import {
   CheckCircle,
 } from 'lucide-react';
 import { CarmensLogo } from './CarmensLogo';
+import { PolicyType } from './PolicyModal';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenPolicy?: (tab: PolicyType) => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenPolicy }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -39,14 +44,29 @@ export const Footer: React.FC = () => {
             <p className="text-xs sm:text-sm text-[#b8c1d6] leading-relaxed max-w-sm">
               Liderança e autoridade no transporte rodoviário de cargas. Unindo inovação e tecnologia satelital de ponta para garantir que sua mercadoria chegue com integridade e pontualidade.
             </p>
-            <div className="pt-2 text-xs text-[#8b95ad] space-y-1">
-              <div className="flex items-center gap-2">
+            <div className="pt-2 text-xs text-[#8b95ad] space-y-1.5">
+              <a
+                href="https://maps.google.com/?q=Rodovia+Anhanguera+km+18+Sao+Paulo+SP"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-[#e9b949] transition-colors"
+                title="Abrir localização no Google Maps"
+              >
                 <MapPin className="w-3.5 h-3.5 text-[#e9b949] shrink-0" />
                 <span>Hub Operacional: Rod. Anhanguera, km 18 - São Paulo/SP</span>
-              </div>
+              </a>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-[#e9b949] shrink-0" />
-                <span>Comercial: (11) 99876-5432 / 0800 770 2026</span>
+                <span>
+                  Comercial:{' '}
+                  <a href="tel:+5511998765432" className="hover:text-white underline transition-colors">
+                    (11) 99876-5432
+                  </a>{' '}
+                  /{' '}
+                  <a href="tel:08007702026" className="hover:text-white underline transition-colors">
+                    0800 770 2026
+                  </a>
+                </span>
               </div>
             </div>
           </div>
@@ -95,7 +115,12 @@ export const Footer: React.FC = () => {
                 <Mail className="w-4 h-4 text-[#e9b949] shrink-0" />
                 <div>
                   <span className="text-[#8b95ad] block text-[10px] uppercase font-semibold">E-mail Corporativo:</span>
-                  <span className="font-bold text-white">comercial@carmenstransportes.com.br</span>
+                  <a
+                    href="mailto:comercial@carmenstransportes.com.br"
+                    className="font-bold text-white hover:text-[#e9b949] transition-colors"
+                  >
+                    comercial@carmenstransportes.com.br
+                  </a>
                 </div>
               </div>
 
@@ -117,13 +142,28 @@ export const Footer: React.FC = () => {
             © {new Date().getFullYear()} <strong className="text-white">Carmen's Transportes Ltda</strong>. Todos os direitos reservados. CNPJ: 12.345.678/0001-90
           </div>
 
-          <div className="flex items-center gap-6">
-            <a href="#inicio" className="hover:text-white transition-colors">Termos de Uso</a>
-            <a href="#inicio" className="hover:text-white transition-colors">Privacidade &amp; LGPD</a>
-            <a href="#inicio" className="hover:text-white transition-colors">Canal de Ética</a>
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+            <button
+              onClick={() => onOpenPolicy && onOpenPolicy('termos')}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
+              Termos de Uso
+            </button>
+            <button
+              onClick={() => onOpenPolicy && onOpenPolicy('privacidade')}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
+              Privacidade &amp; LGPD
+            </button>
+            <button
+              onClick={() => onOpenPolicy && onOpenPolicy('etica')}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
+              Canal de Ética
+            </button>
             <button
               onClick={scrollToTop}
-              className="p-2 rounded-lg bg-white/10 hover:bg-[#e9b949] hover:text-[#1a1404] transition-all cursor-pointer"
+              className="p-2 rounded-lg bg-white/10 hover:bg-[#e9b949] hover:text-[#1a1404] transition-all cursor-pointer ml-auto sm:ml-0"
               title="Voltar ao topo"
             >
               <ArrowUp className="w-4 h-4" />
@@ -135,3 +175,4 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
+

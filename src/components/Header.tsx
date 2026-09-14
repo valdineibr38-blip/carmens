@@ -56,13 +56,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenTracking, onOpenQuote }) =
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Brand Logo Lockup */}
-          <a
-            href="#"
-            className="group flex items-center transition-all hover:opacity-95 py-0.5"
+          <button
+            onClick={() => scrollToSection('inicio')}
+            className="group flex items-center transition-all hover:opacity-95 py-0.5 cursor-pointer text-left"
             id="header-brand-link"
+            aria-label="Carmen's Transportes - Voltar ao início"
           >
             <CarmensLogo variant="horizontal" theme="light" className="w-auto" />
-          </a>
+          </button>
 
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-1 xl:gap-2" id="desktop-nav-menu">
